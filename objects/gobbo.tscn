@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj54gc3l8yw1d"]
+
+[ext_resource type="Script" path="res://objects/gobbo.gd" id="1_awp7y"]
+[ext_resource type="Texture2D" uid="uid://dshfeydeojb2u" path="res://assets/gobbo_rise.tres" id="2_t040m"]
+[ext_resource type="Texture2D" uid="uid://bkql2uooh3pt4" path="res://assets/gobbo_fall.tres" id="3_2ufn5"]
+[ext_resource type="Texture2D" uid="uid://cul717d3hhjkh" path="res://assets/gobbo_dead.tres" id="4_d6300"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lri6k"]
+size = Vector2(16, 16)
+
+[node name="Gobbo" type="Area2D"]
+texture_filter = 1
+script = ExtResource("1_awp7y")
+rising_texture = ExtResource("2_t040m")
+falling_texture = ExtResource("3_2ufn5")
+dead_texture = ExtResource("4_d6300")
+jump_velocity = 250.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_t040m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lri6k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

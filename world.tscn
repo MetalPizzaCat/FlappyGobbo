@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1711udwsjk3c"]
+
+[ext_resource type="Script" path="res://objects/world.gd" id="1_1jy0m"]
+[ext_resource type="PackedScene" uid="uid://dj54gc3l8yw1d" path="res://objects/gobbo.tscn" id="1_us6og"]
+[ext_resource type="PackedScene" uid="uid://cxr5evyw8f6wg" path="res://objects/pipe.tscn" id="2_iyh0h"]
+[ext_resource type="TileSet" uid="uid://blui2w816ypuv" path="res://assets/tiles.tres" id="2_kqqux"]
+[ext_resource type="Script" path="res://objects/pipe_manager.gd" id="3_nyeh2"]
+[ext_resource type="Script" path="res://GameCamera.gd" id="3_tmfjf"]
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("pipe_manager")]
+script = ExtResource("1_1jy0m")
+pipe_manager = NodePath("Pipes")
+
+[node name="Gobbo" parent="." instance=ExtResource("1_us6og")]
+position = Vector2(40, 536)
+jump_velocity = 150.0
+
+[node name="Pipes" type="Node2D" parent="."]
+position = Vector2(-24, 448)
+script = ExtResource("3_nyeh2")
+
+[node name="Pipe" parent="Pipes" instance=ExtResource("2_iyh0h")]
+position = Vector2(224, 200)
+
+[node name="Pipe2" parent="Pipes" instance=ExtResource("2_iyh0h")]
+position = Vector2(336, 0)
+
+[node name="Pipe3" parent="Pipes" instance=ExtResource("2_iyh0h")]
+position = Vector2(440, 0)
+
+[node name="Pipe4" parent="Pipes" instance=ExtResource("2_iyh0h")]
+position = Vector2(544, 0)
+
+[node name="Pipe5" parent="Pipes" instance=ExtResource("2_iyh0h")]
+position = Vector2(672, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(192, 536)
+zoom = Vector2(2, 2)
+script = ExtResource("3_tmfjf")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("2_kqqux")
+format = 2
+layer_0/tile_data = PackedInt32Array(2555904, 65536, 4, 2555905, 65536, 4, 2555906, 0, 0, 2555907, 131072, 4, 2555908, 0, 4, 2555909, 0, 4, 2555910, 0, 4, 2555911, 0, 4, 2555912, 65536, 0, 2555913, 131072, 0, 2555914, 0, 0, 2555915, 131072, 4, 2555926, 0, 4, 2555927, 0, 4, 2555928, 131072, 4, 2555929, 65536, 4, 2555930, 131072, 4, 2555931, 65536, 4, 2555932, 0, 4, 2555933, 65536, 4, 2555934, 131072, 0, 2555935, 131072, 4, 2555936, 65536, 4, 2555916, 131072, 4, 2555917, 0, 4, 2555918, 131072, 4, 2555919, 65536, 4, 2555920, 65536, 4, 2555921, 131072, 4, 2555922, 65536, 0, 2555923, 65536, 4, 2555924, 65536, 4, 2555925, 131072, 4, 2490368, 65536, 3, 2490373, 131072, 3, 2490375, 65536, 3, 2490381, 131072, 3, 2490387, 131072, 3, 2490390, 65536, 3, 2490392, 65536, 3, 2490395, 0, 3, 2490399, 131072, 3, 2490397, 65536, 3, 1769472, 131072, 0, 1769473, 65536, 0, 1769474, 65536, 0, 1769475, 131072, 0, 1769476, 0, 0, 1769477, 131072, 0, 1769478, 65536, 0, 1769479, 0, 0, 1769480, 131072, 0, 1769481, 131072, 0, 1769482, 131072, 0, 1769483, 0, 0, 1769484, 131072, 0, 1769485, 0, 0, 1769486, 0, 0, 1769487, 65536, 0, 1769488, 131072, 0, 1769489, 0, 0, 1769490, 65536, 0, 1769491, 65536, 0, 1769492, 131072, 0, 1769493, 131072, 0, 1769494, 0, 0, 1769495, 65536, 0, 1769496, 65536, 0, 1769497, 131072, 0, 1769498, 65536, 0, 1769499, 0, 0, 1769500, 65536, 0, 1769501, 65536, 0, 1769502, 0, 0, 1769503, 0, 0, 1769504, 65536, 0, 1769505, 65536, 0, 1769506, 65536, 0)
+
+[node name="SegmentManager" type="Node2D" parent="."]
+
+[connection signal="died" from="Gobbo" to="." method="_on_gobbo_died"]
+[connection signal="game_restarted" from="Gobbo" to="." method="_on_gobbo_game_restarted"]
