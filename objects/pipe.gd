@@ -6,15 +6,16 @@ class_name Pipe
 @export var default_x_coord: float = 528
 @export var min_y: float = 75
 @export var max_y: float = 160
-@export var min_gap_size : float = 48
-@export var max_gap_size : float = 72
+@export var min_gap_size: float = 48
+@export var max_gap_size: float = 72
 
-@onready var top_segment : Node2D = $TopPipe
+@onready var top_segment: Node2D = $TopPipe
 
 @onready var game_state_manager: GameStateManager = get_node("/root/GameState")
 
-func reset():
-	position.x = default_x_coord
+
+func reset(start: float):
+	position.x = start
 	position.y = randf_range(min_y, max_y)
 	if top_segment != null:
 		top_segment.position.y = -randf_range(min_gap_size, max_gap_size)
@@ -25,4 +26,4 @@ func _physics_process(delta):
 		return
 	position.x -= speed * delta
 	if position.x <= -32:
-		reset()
+		reset(default_x_coord)
