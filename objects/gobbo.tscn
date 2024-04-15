@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj54gc3l8yw1d"]
+[gd_scene load_steps=9 format=3 uid="uid://dj54gc3l8yw1d"]
 
 [ext_resource type="Script" path="res://objects/gobbo.gd" id="1_awp7y"]
 [ext_resource type="Texture2D" uid="uid://dshfeydeojb2u" path="res://assets/gobbo_rise.tres" id="2_t040m"]
 [ext_resource type="Texture2D" uid="uid://bkql2uooh3pt4" path="res://assets/gobbo_fall.tres" id="3_2ufn5"]
 [ext_resource type="Texture2D" uid="uid://cul717d3hhjkh" path="res://assets/gobbo_dead.tres" id="4_d6300"]
+[ext_resource type="AudioStream" uid="uid://bhbeij5reexxy" path="res://assets/sounds/jump.ogg" id="5_2hph4"]
+[ext_resource type="AudioStream" uid="uid://cskghbykj4u2f" path="res://assets/sounds/die.ogg" id="6_n6gh5"]
+[ext_resource type="AudioStream" uid="uid://euop6kwvhovs" path="res://assets/sounds/pipe.ogg" id="7_rrupm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lri6k"]
 size = Vector2(16, 16)
@@ -22,5 +25,14 @@ texture = ExtResource("2_t040m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lri6k")
+
+[node name="JumpSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_2hph4")
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_n6gh5")
+
+[node name="PointSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rrupm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

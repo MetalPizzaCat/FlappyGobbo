@@ -5,15 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://cxr5evyw8f6wg" path="res://objects/pipe.tscn" id="2_iyh0h"]
 [ext_resource type="TileSet" uid="uid://blui2w816ypuv" path="res://assets/tiles.tres" id="2_kqqux"]
 [ext_resource type="Script" path="res://objects/pipe_manager.gd" id="3_nyeh2"]
-[ext_resource type="Script" path="res://GameCamera.gd" id="3_tmfjf"]
 [ext_resource type="Script" path="res://objects/background_regions.gd" id="6_tew47"]
 [ext_resource type="Script" path="res://objects/background.gd" id="6_x84rf"]
 [ext_resource type="TileSet" uid="uid://wvl4gui3rb64" path="res://assets/ported/background.tres" id="8_ro0nw"]
+[ext_resource type="Script" path="res://objects/game_ui_controls.gd" id="10_ryqmb"]
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("pipe_manager")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("pipe_manager", "player")]
 texture_filter = 1
 script = ExtResource("1_1jy0m")
 pipe_manager = NodePath("Pipes")
+player = NodePath("Gobbo")
 
 [node name="BackgroundRegions" type="Node2D" parent="."]
 script = ExtResource("6_tew47")
@@ -72,9 +73,10 @@ tile_set = ExtResource("2_kqqux")
 format = 2
 layer_0/tile_data = PackedInt32Array(2555904, 0, 2, 2555905, 0, 2, 2555906, 0, 2, 2555907, 0, 2, 2555908, 0, 2, 2555909, 0, 2, 2555910, 0, 2, 2555911, 0, 2, 2555912, 0, 2, 2555913, 0, 2, 2555914, 0, 2, 2555915, 0, 2, 2555916, 0, 2, 2555917, 0, 2, 2555918, 0, 2, 2555919, 0, 2, 2555920, 0, 2, 2490368, 65536, 3, 2490373, 131072, 3, 2490375, 65536, 3, 2490381, 131072, 3, 2490390, 65536, 3, 2490392, 65536, 3, 2490395, 0, 3, 2490399, 131072, 3, 2490397, 65536, 3, 1769472, 0, 2, 1769473, 0, 2, 1769474, 0, 2, 1769475, 0, 2, 1769476, 0, 2, 1769477, 0, 2, 1769478, 0, 2, 1769479, 0, 2, 1769480, 0, 2, 1769481, 0, 2, 1769482, 0, 2, 1769483, 0, 2, 1769484, 0, 2, 1769485, 0, 2, 1769486, 0, 2, 1769487, 0, 2, 1769488, 0, 2, 1769489, 0, 2, 2555921, 0, 2, 2555922, 0, 2, 2555923, 0, 2, 2555924, 0, 2, 2555925, 0, 2, 2555926, 0, 0, 2555927, 65536, 0, 2555928, 65536, 0, 2555929, 0, 4, 2555930, 131072, 4, 2555931, 0, 4, 2555932, 65536, 4, 2555933, 0, 4, 2555934, 131072, 0, 2555935, 65536, 4, 2555936, 0, 0, 2555937, 0, 4, 2555938, 65536, 4, 2555939, 0, 0, 2555940, 131072, 0, 2555941, 0, 0, 2555942, 131072, 0, 2555943, 131072, 0, 2555944, 0, 4, 2555945, 0, 4, 2555946, 65536, 0, 2555947, 0, 4, 2555948, 131072, 4, 2555949, 0, 0, 2555950, 131072, 4, 2555951, 131072, 4, 2555952, 131072, 4, 2555953, 0, 0, 2555954, 131072, 0, 2555955, 131072, 4, 2555956, 0, 0, 2555957, 65536, 4, 2555958, 65536, 4, 2555959, 131072, 0, 2555960, 131072, 0, 2555961, 65536, 4, 2555962, 131072, 0, 2555963, 131072, 4, 2555964, 65536, 4, 2555965, 0, 4, 2555966, 0, 2, 2555967, 0, 2, 2555968, 0, 2, 2555969, 0, 2, 2555970, 0, 2, 2555971, 0, 2, 2555972, 0, 2, 2555973, 0, 2, 2555974, 0, 2, 2555975, 0, 2, 2555976, 0, 2, 2555977, 0, 2, 2555978, 0, 2, 2555979, 0, 2, 2555980, 0, 2, 2555981, 0, 2, 2555982, 0, 2, 2555983, 0, 2, 2555984, 0, 2, 2555985, 0, 2, 2555986, 0, 2, 2555987, 0, 2, 2555988, 131072, 0, 2555989, 65536, 0, 1769490, 0, 2, 1769491, 0, 2, 1769492, 0, 2, 1769493, 0, 2, 1769494, 131072, 4, 1769495, 65536, 0, 1769496, 131072, 0, 1769497, 0, 4, 1769498, 0, 4, 1769499, 65536, 0, 1769500, 0, 4, 1769501, 131072, 4, 1769502, 131072, 0, 1769503, 0, 4, 1769504, 0, 0, 1769505, 131072, 0, 1769506, 65536, 4, 1769507, 131072, 0, 1769508, 131072, 0, 1769509, 65536, 0, 1769510, 131072, 0, 1769511, 65536, 4, 1769512, 0, 0, 1769513, 65536, 0, 1769514, 0, 4, 1769515, 0, 4, 1769516, 65536, 0, 1769517, 0, 4, 1769518, 0, 2, 1769519, 0, 2, 1769520, 0, 2, 1769521, 0, 2, 1769522, 0, 2, 1769523, 0, 2, 1769524, 0, 2, 1769525, 0, 2, 1769526, 0, 2, 1769527, 0, 2, 1769528, 0, 2, 1769529, 0, 2, 1769530, 0, 2, 1769531, 0, 2, 1769532, 0, 2, 1769533, 0, 2, 1769534, 0, 2, 1769535, 0, 2, 1769536, 0, 2, 1769537, 0, 2, 1769538, 0, 2, 1769539, 0, 2, 1769540, 0, 2, 1769541, 0, 2, 1769542, 0, 2, 1769543, 0, 2, 1769544, 0, 2, 1769545, 0, 2, 1769546, 0, 2, 1769547, 0, 2, 1769548, 0, 2, 1769549, 0, 2, 1769550, 0, 2, 1769551, 0, 2, 1769552, 0, 2, 1769553, 0, 2, 1769554, 0, 2, 1769555, 0, 0, 1769556, 0, 0, 1769557, 65536, 0, 1769558, 0, 4, 1769559, 65536, 0, 1769560, 131072, 0, 1769561, 131072, 0, 1769562, 65536, 0, 1769563, 0, 0, 1769564, 131072, 4, 1769565, 65536, 0, 1769566, 0, 4, 1769567, 131072, 0, 1769568, 131072, 0, 1769569, 65536, 0, 1769570, 65536, 0, 1769571, 65536, 4, 1769572, 65536, 4, 1769573, 131072, 0, 1769574, 65536, 4, 1769575, 0, 2, 1769576, 0, 2, 1769577, 0, 2, 1769578, 0, 2, 1769579, 0, 2, 1769580, 0, 2, 2555990, 0, 4, 2555991, 65536, 0, 2555992, 65536, 0, 2555993, 65536, 4, 2555994, 131072, 4, 2555995, 0, 4, 2555996, 131072, 0, 2555997, 0, 0, 2555998, 0, 4, 2555999, 65536, 4, 2556000, 0, 0, 2556001, 0, 2, 2556002, 0, 2, 2556003, 0, 2, 2556004, 0, 2, 2556005, 0, 2, 2556006, 0, 2, 2556007, 0, 2, 2556008, 0, 2, 2556009, 0, 2, 2556010, 0, 2, 2556011, 0, 2, 2556012, 0, 2, 1835105, 65536, 6, 1835102, 65536, 6, 1835094, 131072, 6, 1835096, 0, 6, 1835097, 131072, 6, 1835048, 65536, 6, 1835041, 131072, 6, 1835035, 131072, 6, 1835031, 0, 6, 2490413, 0, 3, 2490409, 131072, 3, 2490404, 131072, 3, 2490425, 131072, 3, 2490461, 131072, 3, 2490458, 65536, 3, 2490456, 0, 3)
 
-[node name="Gobbo" parent="." instance=ExtResource("1_us6og")]
+[node name="Gobbo" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_us6og")]
 position = Vector2(40, 536)
 jump_velocity = 150.0
+ui = NodePath("../GameControls")
 
 [node name="Pipes" type="Node2D" parent="." node_paths=PackedStringArray("pipe_start_position")]
 position = Vector2(-24, 448)
@@ -97,14 +99,68 @@ position = Vector2(544, 0)
 position = Vector2(672, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(192, 536)
-zoom = Vector2(3.11, 3.11)
-script = ExtResource("3_tmfjf")
+position = Vector2(80, 536)
+zoom = Vector2(3.105, 3.105)
 
 [node name="SegmentManager" type="Node2D" parent="."]
 
 [node name="PipeStartPosition" type="Node2D" parent="."]
 position = Vector2(192, 448)
 
+[node name="GameControls" type="Control" parent="."]
+z_index = 2
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_top = 424.0
+offset_right = 40.0
+offset_bottom = 464.0
+scale = Vector2(0.9, 0.9)
+script = ExtResource("10_ryqmb")
+
+[node name="ScoreBox" type="HBoxContainer" parent="GameControls"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GameControls/ScoreBox"]
+texture_filter = 1
+layout_mode = 2
+text = "SCORE: "
+
+[node name="ScoreLabel" type="Label" parent="GameControls/ScoreBox"]
+layout_mode = 2
+text = "0
+"
+
+[node name="HighscoreBox" type="HBoxContainer" parent="GameControls"]
+layout_mode = 0
+offset_left = 97.7778
+offset_top = -3.39084e-05
+offset_right = 171.778
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GameControls/HighscoreBox"]
+texture_filter = 1
+layout_mode = 2
+text = "HIGH: "
+
+[node name="HighscoreLabel" type="Label" parent="GameControls/HighscoreBox"]
+layout_mode = 2
+text = "0
+"
+
+[node name="Button" type="Button" parent="GameControls"]
+visible = false
+layout_mode = 0
+offset_left = 53.3333
+offset_top = 142.222
+offset_right = 138.333
+offset_bottom = 173.222
+text = "Start over"
+
 [connection signal="died" from="Gobbo" to="." method="_on_gobbo_died"]
+[connection signal="died" from="Gobbo" to="GameControls" method="_on_gobbo_died"]
 [connection signal="game_restarted" from="Gobbo" to="." method="_on_gobbo_game_restarted"]
+[connection signal="game_restart_requested" from="GameControls" to="." method="_on_game_controls_game_restart_requested"]
+[connection signal="pressed" from="GameControls/Button" to="GameControls" method="_on_button_pressed"]

@@ -27,3 +27,8 @@ func _physics_process(delta):
 	position.x -= speed * delta
 	if position.x <= -32:
 		reset(default_x_coord)
+
+
+func _on_area_2d_area_entered(area:Area2D):
+	if area is Goblin:
+		area.add_point()
