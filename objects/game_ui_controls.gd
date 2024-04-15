@@ -18,8 +18,9 @@ var score: int = 0:
 		score_label.text = str(value)
 		if value > highscore:
 			highscore = value 
+			highscore_changed = true
 
-
+var highscore_changed : bool = false
 var highscore: int = 0:
 	get:
 		return _highscore
@@ -32,12 +33,16 @@ func _ready():
 	if not FileAccess.file_exists("user://score.dat"):
 		return
 	var file = FileAccess.open("user://score.dat", FileAccess.READ)
-	highscore = int(file.get_as_text())
+	highscore = file.get_32()
 
 func _on_gobbo_died():
 	restart_button.visible = true
-
+	if highscore_changed:
+		highscore_changed = false
+		var file = FileAccess.open("user://score.dat", FileAccess.WRITE)
+		file.store_32(highscore)
 
 func _on_button_pressed():
 	restart_button.visible = false
 	game_restart_requested.emit()
+	score = 0

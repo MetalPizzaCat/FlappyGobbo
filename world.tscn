@@ -100,7 +100,7 @@ position = Vector2(672, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 536)
-zoom = Vector2(3.105, 3.105)
+zoom = Vector2(3.13, 3.13)
 
 [node name="SegmentManager" type="Node2D" parent="."]
 
@@ -118,9 +118,17 @@ offset_bottom = 464.0
 scale = Vector2(0.9, 0.9)
 script = ExtResource("10_ryqmb")
 
+[node name="ColorRect" type="ColorRect" parent="GameControls"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 9.0
+offset_right = 187.0
+offset_bottom = 27.0
+color = Color(0.145098, 0.145098, 0.145098, 0.8)
+
 [node name="ScoreBox" type="HBoxContainer" parent="GameControls"]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 74.0
 offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="GameControls/ScoreBox"]

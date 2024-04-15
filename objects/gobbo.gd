@@ -64,6 +64,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		if dead:
 			game_restarted.emit()
+		jump_sound_player.play()
 		velocity.y = -jump_velocity
 		sprite.texture = rising_texture
 		
